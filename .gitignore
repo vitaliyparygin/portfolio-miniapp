@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+*.tsbuildinfo
+.idea/
+public/.gitkeep
+public/cv/.gitkeep
