@@ -1,4 +1,4 @@
-import {Cpu, Database, Network, Sparkles} from 'lucide-react'
+import {Cpu, Database, Network, Sparkles, Send, Building2, ChartNoAxesCombined} from 'lucide-react'
 import {SectionHeading} from './SectionHeading'
 
 const focuses = [
@@ -7,7 +7,11 @@ const focuses = [
     ['RAG systems', Database],
     ['AI Agents', Network],
     ['Backend architecture', Network],
-    ['Automation systems', Cpu]]
+    ['Automation systems', Cpu],
+    ['Telegram SNS', Send],
+    ['ERP', Building2],
+    ['Highload', ChartNoAxesCombined],
+]
 
 export function About() {
     return <section id="about" className="section"><SectionHeading eyebrow="ABOUT ME"
