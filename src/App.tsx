@@ -53,20 +53,41 @@ const knowledge = [
     }
 ]
 
+const normalizeQuestion = (value: string) =>
+    value.toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
+
+const getAnswer = (question: string) => {
+    const normalizedQuestion = normalizeQuestion(question)
+
+    // Clicking a suggested question always returns its paired answer.
+    const exactMatch = knowledge.find(({q}) => normalizeQuestion(q) === normalizedQuestion)
+    if (exactMatch) return exactMatch.a
+
+    // For typed questions, choose the dictionary entry with the most shared words.
+    const questionWords = new Set(normalizedQuestion.split(' ').filter(word => word.length > 2))
+    const bestMatch = knowledge
+        .map(entry => ({
+            entry,
+            score: normalizeQuestion(entry.q)
+                .split(' ')
+                .filter(word => questionWords.has(word)).length,
+        }))
+        .sort((a, b) => b.score - a.score)[0]
+
+    return bestMatch?.score
+        ? bestMatch.entry.a
+        : 'I don’t have that information yet. Try one of the suggested questions.'
+}
+
 function AskAI({close}: { close: () => void }) {
     const [messages, setMessages] = useState<{ role: string; text: string }[]>([{
         role: 'ai',
         text: 'Hi — I’m Vitaliy’s portfolio assistant. What would you like to know?'
     }]);
     const [input, setInput] = useState('');
-    const answer = (question: string) => {
-        const normalized = question.toLowerCase();
-        return knowledge.find(k =>
-            normalized.includes('project') ? k.q.includes('projects') : normalized.includes('technolog') || normalized.includes('stack') ? k.q.includes('technologies') : normalized.includes('vital') || normalized.includes('who') ? k.q.includes('Vitaliy') : false)?.a ?? 'I can tell you about Vitaliy, his projects, or the technologies he uses. Try one of the suggestions below.'
-    }
     const submit = (question = input) => {
         if (!question.trim()) return;
-        setMessages(m => [...m, {role: 'user', text: question}, {role: 'ai', text: answer(question)}]);
+        setMessages(m => [...m, {role: 'user', text: question}, {role: 'ai', text: getAnswer(question)}]);
         setInput('')
     }
     return <motion.div className="ai-overlay" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}
