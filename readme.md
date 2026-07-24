@@ -17,7 +17,7 @@ Copy `.env.example` to `.env` and replace the placeholders:
 
 ```bash
 VITE_TELEGRAM_USERNAME=your_telegram_username
-VITE_GITHUB_URL=https://github.com/vitaliyparygin
+VITE_GITHUB_URL=https://github.com/your
 VITE_EMAIL=your@email.com
 ```
 
