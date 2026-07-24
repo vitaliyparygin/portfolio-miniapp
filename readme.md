@@ -50,4 +50,15 @@ The included `vercel.json` routes all paths to the single-page app.
 
 ## Ask my AI
 
-The modal currently answers from a small prepared knowledge base in `src/App.tsx`. Replace the `answer` function with a FastAPI endpoint when the RAG backend is ready.
+The modal currently answers from a small prepared knowledge base in `src/App.tsx`.
+Replace the `answer` function with a FastAPI endpoint when the RAG backend is ready.
+
+### check pre-reliz
+```
+npm run check
+npx eslint --init
+npm run typecheck
+npm run test:run
+npm run build
+
+```

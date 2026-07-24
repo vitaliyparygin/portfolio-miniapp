@@ -13,11 +13,13 @@ vi.mock("framer-motion", () => ({
 
 describe("Hero", () => {
   it("renders developer name", () => {
-    render(<Hero />);
-    print(portfolio.name)
+    render(
+        <Hero onAsk={() => {}} />
+    );
     expect(
-      screen.getByText(portfolio.name)
-    ).toBeInTheDocument();
+        screen.getByRole("heading")
+    ).toHaveTextContent(portfolio.name);
+
     expect(portfolio.name).not.toBe("");
     expect(portfolio.github.url).toMatch(/^https:\/\/github.com/);
     expect(portfolio.projects.length).toBeGreaterThan(0);
