@@ -8,6 +8,7 @@ import {Projects} from './components/Projects'
 import {CVButton} from './components/CVButton'
 import {Contact} from './components/Contact'
 import {initTelegram} from './components/TelegramInit'
+import WebApp from "@twa-dev/sdk";
 
 const knowledge = [
     {
@@ -179,7 +180,14 @@ function AskAI({close}: { close: () => void }) {
 export default function App() {
     const [askOpen, setAskOpen] = useState(false);
     const [name, setName] = useState('');
-    useEffect(() => setName(initTelegram().firstName), []);
+      useEffect(() => {
+        setName(initTelegram().firstName)
+        WebApp.ready();
+        WebApp.expand();
+
+        WebApp.setHeaderColor("#000000");
+        WebApp.setBackgroundColor("#000000");
+      }, []);
     return <>
         <main>
             <nav><a className="brand" href="#top"><span>V</span> VITALIY<span className="brand-dim">.AI</span></a><a
@@ -199,3 +207,6 @@ export default function App() {
             <CVButton/><Contact/></main>
         <AnimatePresence>{askOpen && <AskAI close={() => setAskOpen(false)}/>}</AnimatePresence></>
 }
+
+
+// export default App;
