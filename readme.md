@@ -1,6 +1,6 @@
 # 🚀 Portfolio Mini App
 
-A dark, responsive Telegram Mini App portfolio for **Vitaliy Parygin**, AI Backend Engineer. Built with React, TypeScript, Vite, Tailwind CSS, Framer Motion, and the Telegram WebApp SDK.
+A dark, responsive Telegram Mini App portfolio, AI Backend Engineer. Built with React, TypeScript, Vite, Tailwind CSS, Framer Motion, and the Telegram WebApp SDK.
 
 ![CI](https://github.com/vitaliyparygin/portfolio-miniapp/actions/workflows/ci.yml/badge.svg)
 ![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=vitaliy-parygin-portfolio)
@@ -42,10 +42,30 @@ npm run test:run
 Place the real PDF at:
 
 ```
-public/cv/Vitaliy_Parygin_CV.pdf
+public/cv/cv.pdf
+and replase data/portfolio.tsx::cv.download
 ```
 
 The Download CV buttons already point to this public path.
+
+## Your portfolio online for 5 minutes free
+
+````
+1.Fork
+
+2.Replace
+
+files:
+public/favicon.ico
+public/cv/resume.pdf
+info:
+src/data/*.ts
+
+3.Deploy to Vercel
+
+Done.
+````
+
 
 ## Deploy to Vercel
 

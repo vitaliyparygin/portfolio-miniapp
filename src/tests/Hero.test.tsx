@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 import Hero from "../components/Hero";
 import { portfolio } from "../data/portfolio";
+import {projects} from "../data/projects";
 
 vi.mock("framer-motion", () => ({
   motion: {
@@ -22,7 +23,7 @@ describe("Hero", () => {
 
     expect(portfolio.name).not.toBe("");
     expect(portfolio.github.url).toMatch(/^https:\/\/github.com/);
-    expect(portfolio.projects.length).toBeGreaterThan(0);
+    expect(projects.length).toBeGreaterThan(0);
     expect(portfolio.cv.download).toMatch(/\.pdf$/);
   });
 
