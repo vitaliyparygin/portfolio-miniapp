@@ -1,6 +1,15 @@
-# Vitaliy AI Portfolio
+# 🚀 Portfolio Mini App
 
 A dark, responsive Telegram Mini App portfolio for **Vitaliy Parygin**, AI Backend Engineer. Built with React, TypeScript, Vite, Tailwind CSS, Framer Motion, and the Telegram WebApp SDK.
+
+![CI](https://github.com/vitaliyparygin/portfolio-miniapp/actions/workflows/ci.yml/badge.svg)
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=vitaliy-parygin-portfolio)
+![License](https://img.shields.io/badge/license-MIT-green)
+![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-6-purple?logo=vite)
+![Telegram](https://img.shields.io/badge/Telegram-Mini%20App-26A5E4?logo=telegram)
+![Tests](https://img.shields.io/badge/Tests-Vitest-6E9F18?logo=vitest)
 
 ## Run locally
 
@@ -62,3 +71,17 @@ npm run test:run
 npm run build
 
 ```
+
+## Live Demo
+
+🌐 Web
+https://vitaliy-parygin-portfolio.vercel.app
+
+🤖 Telegram Mini App
+https://t.me/vitaliys_assistant_bot/portfolio
+
+📄 CV
+https://vitaliy-parygin-portfolio.vercel.app/cv/Vitaliy_Parygin_CV.pdf
+
+💻 GitHub
+https://github.com/vitaliyparygin/portfolio-miniapp
