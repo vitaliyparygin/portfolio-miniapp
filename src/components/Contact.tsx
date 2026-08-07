@@ -3,8 +3,8 @@ import {SectionHeading} from './SectionHeading'
 import {portfolio} from "../data/portfolio";
 
 export function Contact() {
-    const telegram = `https://t.me/${import.meta.env.VITE_TELEGRAM_USERNAME || 'YOUR_USERNAME'}`;
-    const email = import.meta.env.VITE_EMAIL || 'your@email.com';
+    const telegram = `https://t.me/${import.meta.env.VITE_TELEGRAM_USERNAME || portfolio.telegram}`;
+    const email = import.meta.env.VITE_EMAIL || portfolio.email;
     return <section id="contact" className="section contact">
         <SectionHeading eyebrow="CONTACT"
                      title="Let’s build something intelligent."
