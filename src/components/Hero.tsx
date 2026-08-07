@@ -6,7 +6,7 @@ export function Hero({
          onAsk = () => {
          }
      }: { onAsk?: () => void }) {
-    const telegram = `https://t.me/${import.meta.env.VITE_TELEGRAM_USERNAME || 'YOUR_USERNAME'}`
+    const telegram = `https://t.me/${import.meta.env.VITE_TELEGRAM_USERNAME || portfolio.telegram}`
     return <section className="hero">
         <div className="hero-orb orb-one"/>
         <div className="hero-orb orb-two"/>
