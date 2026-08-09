@@ -24,7 +24,13 @@ export const projects = [
             'Multi-agent orchestration',
             'Prompt Engineering',
             'SQLAlchemy',
-            'Ollama'
+            'Ollama',
+            'Prometheus',
+            'Grafana',
+            'Redis',
+            'Celery',
+            'PostgreSQL',
+
         ],
         features: ['Corporation memory', 'AI Meeting Summary', 'Handling data from document flow'],
         link: 'https://github.com/vitaliyparygin/erp-ai-assistant'
