@@ -103,5 +103,30 @@ export const knowledge = [
       a: 'I enjoy technically challenging projects where software has a measurable impact on users or businesses.' +
           ' AI platforms, enterprise automation, developer tools, observability, document intelligence,' +
           ' workflow automation, and distributed backend systems are particularly interesting to me.'
+    },{
+    q: 'Have you built agentic AI systems used by real users in production?',
+    a:
+        'Not yet. My hands-on experience with AI development started in 2026. I have been building agentic AI and RAG systems with LangGraph and LangChain, but I have not yet deployed such a system to a large production user base.\n' +
+        '\n' +
+        'I do have 16+ years of software engineering experience, including high-load and complex backend systems.'
+    },{
+    q: 'Do you have 1.5+ years of experience building agentic AI systems?',
+    a: 'No. I started developing AI systems in 2026.\n' +
+        '\n' +
+        'I have hands-on experience with Python, LangChain, LangGraph, RAG, Qdrant, Ollama, tool calling, multi-agent workflows, RAGAS, LangFuse, FastAPI and Docker.'
+    }, {
+        q: 'Do you have 7+ years of software engineering experience?',
+        a: 'Yes. I have 16+ years of software engineering experience.'+
+
+        'I have 10+ years of experience with PHP and JavaScript and 7+ years with Python and Odoo. I have worked on high-load systems, complex existing systems, and projects built from scratch.'
+    },{
+        q: 'Are you comfortable working with Python and frontend tasks?',
+        a: 'Yes. Python is currently my main backend and AI language.'+
+
+        'I also have experience with full-stack development, including JavaScript, TypeScript, React and frontend/backend integration.'
+    }, {
+        q: 'How do you use AI in your daily development work?',
+        a: 'In my previous jobs, I did not use AI regularly. Since I started developing AI systems in 2026, I use it extensively for coding, debugging, testing, research, documentation and exploring technical solutions.'+
+            'Currently, I would estimate that around 30–50% of my development work is AI-assisted, depending on the task.'
     }
 ]
