@@ -1,12 +1,7 @@
 import {ArrowUpRight, Bot, Boxes, Github, MessageSquareMore} from 'lucide-react'
+
 export const projects = [
-    {
-        name: 'AI Home OS',
-        type: 'AI AUTOMATION PLATFORM',
-        icon: Bot, desc: 'Personal AI assistant platform for home and business automation.',
-        tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'LLM', 'Ollama'],
-        features: ['Personal memory', 'AI agents', 'Telegram integration', 'Knowledge base'],
-    },
+
     {
         name: 'ERP AI Assistant',
         type: 'AI AUTOMATION PLATFORM',
@@ -34,6 +29,23 @@ export const projects = [
         ],
         features: ['Corporation memory', 'AI Meeting Summary', 'Handling data from document flow'],
         link: 'https://github.com/vitaliyparygin/erp-ai-assistant'
+    },
+    {
+        name: 'AI secretary',
+        type: 'AI AUTOMATION PLATFORM',
+        icon: MessageSquareMore, desc: 'An AI phone secretary ' +
+            'Filters incoming phone calls, collects and transmits information about' +
+            ' the subscriber, reserves calls, answers questions',
+        tags: ['Python', 'Telegram Bot', 'FastAPI', 'Docker',  'Uvicorn', 'Pydantic', 'SQLAlchemy', 'Asyncpg',
+        'Alembic', 'Greenlet', 'Faster-whisper', ],
+        features: ['recording and analysis of voice messages', 'Filters incoming phone calls', 'FAQ answer', 'Instant answers'],
+    },
+    {
+        name: 'AI Home OS',
+        type: 'AI AUTOMATION PLATFORM',
+        icon: Bot, desc: 'Personal AI assistant platform for home and business automation.',
+        tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'LLM', 'Ollama'],
+        features: ['Personal memory', 'AI agents', 'Telegram integration', 'Knowledge base'],
     },
     {
         name: 'RAG Benchmark',
