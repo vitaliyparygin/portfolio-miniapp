@@ -8,8 +8,10 @@ export const projects = [
         icon: Bot, desc: 'Corporation AI assistant platform for business automation.',
         tags: [
             'Python',
+            'FastAPI',
             'RAG',
             'LLM',
+            'Pydantic',
             'Docker',
             'Vector Database',
             'Qdrant',
@@ -25,6 +27,14 @@ export const projects = [
             'Redis',
             'Celery',
             'PostgreSQL',
+            'LangFuse',
+            'LangSmith',
+            'RAGAS',
+            'pytest',
+            'Ruff',
+            'Black',
+            'mypy',
+            'uv'
 
         ],
         features: ['Corporation memory', 'AI Meeting Summary', 'Handling data from document flow'],
@@ -37,7 +47,7 @@ export const projects = [
             'Filters incoming phone calls, collects and transmits information about' +
             ' the subscriber, reserves calls, answers questions',
         tags: ['Python', 'Telegram Bot', 'FastAPI', 'Docker',  'Uvicorn', 'Pydantic', 'SQLAlchemy', 'Asyncpg',
-        'Alembic', 'Greenlet', 'Faster-whisper', ],
+        'Alembic', 'Greenlet', 'Faster-whisper', 'Asterisk', 'RTP', 'NAT', 'SIP'],
         features: ['recording and analysis of voice messages', 'Filters incoming phone calls', 'FAQ answer', 'Instant answers'],
     },
     {
