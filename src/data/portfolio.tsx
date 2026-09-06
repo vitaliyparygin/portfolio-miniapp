@@ -14,9 +14,12 @@ export const portfolio = {
     },
     cv: {
         download: "/cv/Vitaliy_Parygin_CV.pdf",
+        googleDocsId: "176CAPQHNwcPLE78l6L6FzuaYX7sT0TCBm10PeTj9eKU"
     },
     desc: "Building AI agents, RAG systems and backend platforms using Python, FastAPI and Large Language Models.",
-
+    analitycs: {
+        VITE_TRACKING_ID: ""
+    }
 }
 
 

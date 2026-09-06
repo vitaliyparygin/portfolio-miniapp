@@ -74,16 +74,24 @@ function AskAI({close}: { close: () => void }) {
 }
 
 export default function App() {
-    const [askOpen, setAskOpen] = useState(false);
-    const [name, setName] = useState('');
-      useEffect(() => {
-        setName(initTelegram().firstName)
-        WebApp.ready();
-        WebApp.expand();
+  useEffect(() => {
+    // Повертаємо значення з змінної оточення
+    const trackingId = import.meta.env.VITE_TRACKING_ID;
 
-        WebApp.setHeaderColor("#000000");
-        WebApp.setBackgroundColor("#000000");
-      }, []);
+    if (trackingId) {
+      // Ініціалізація Google Analytics
+      const script = document.createElement('script');
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${trackingId}`;
+      script.async = true;
+      script.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', trackingId);
+      };
+      document.head.appendChild(script);
+    }
+  }, []);
     return <>
         <main>
             <nav><a className="brand" href="#top"><span>V</span> {portfolio.firstName}<span className="brand-dim">.AI</span></a>
