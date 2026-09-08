@@ -41,8 +41,8 @@ export const projects = [
         link: 'https://github.com/vitaliyparygin/erp-ai-assistant'
     },
     {
-        name: 'AI secretary',
-        type: 'AUTOMATION PLATFORM',
+        name: 'AI phone secretary',
+        type: 'AUTOMATION PHONE SYSTEM',
         icon: MessageSquareMore, desc: 'An AI phone secretary ' +
             'Filters incoming phone calls, collects and transmits information about' +
             ' the subscriber, reserves calls, answers questions',
@@ -56,6 +56,15 @@ export const projects = [
         icon: Glasses, desc: 'AI Product manager Agent. Knows everything about projects. Presents and answers questions about projects and more.',
         tags: ['Python', 'FastAPI', 'Docker', 'LLM', 'Ollama', 'Pydantic', 'anyio'],
         features: ['Corporation network', 'Collaboration with team AI agents', 'Knowledge base'],
+    },
+    {
+        name: 'AI Meeting Agent',
+        type: 'AI Meeting Agent',
+        icon: Glasses, desc: 'Master of meeting. Visit meeting, protocol officer, manages corporate document flow,\n' +
+            '    sent short description by meeting, create task and assign this task for user or other agents',
+        tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'LLM', 'Ollama'],
+        features: ['Corporation network', 'Collaboration with team AI agents', 'Knowledge base', 'Send Emails',
+            'Manage Task', 'Assigns Tasks'],
     },
     {
         name: 'AI Home OS',
