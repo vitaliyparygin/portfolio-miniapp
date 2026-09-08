@@ -1,4 +1,4 @@
-import {ArrowUpRight, Bot, Boxes, Github, MessageSquareMore} from 'lucide-react'
+import {ArrowUpRight, Bot, Boxes, Github, MessageSquareMore, Glasses} from 'lucide-react'
 
 export const projects = [
 
@@ -42,7 +42,7 @@ export const projects = [
     },
     {
         name: 'AI secretary',
-        type: 'AI AUTOMATION PLATFORM',
+        type: 'AUTOMATION PLATFORM',
         icon: MessageSquareMore, desc: 'An AI phone secretary ' +
             'Filters incoming phone calls, collects and transmits information about' +
             ' the subscriber, reserves calls, answers questions',
@@ -51,9 +51,16 @@ export const projects = [
         features: ['recording and analysis of voice messages', 'Filters incoming phone calls', 'FAQ answer', 'Instant answers'],
     },
     {
+        name: 'AI Product Manager',
+        type: 'AI PM Agent',
+        icon: Glasses, desc: 'AI Product manager Agent. Knows everything about projects. Presents and answers questions about projects and more.',
+        tags: ['Python', 'FastAPI', 'Docker', 'LLM', 'Ollama', 'Pydantic', 'anyio'],
+        features: ['Corporation network', 'Collaboration with team AI agents', 'Knowledge base'],
+    },
+    {
         name: 'AI Home OS',
         type: 'AI AUTOMATION PLATFORM',
-        icon: Bot, desc: 'Personal AI assistant platform for home and business automation.',
+        icon: Bot, desc: 'AI assistant platform for home and business automation.',
         tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'LLM', 'Ollama'],
         features: ['Personal memory', 'AI agents', 'Telegram integration', 'Knowledge base'],
     },

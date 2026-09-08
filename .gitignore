@@ -3,5 +3,6 @@ dist
 .env
 *.tsbuildinfo
 .idea/
+.DS_Store
 public/.gitkeep
 public/cv/.gitkeep
