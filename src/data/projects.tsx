@@ -34,7 +34,8 @@ export const projects = [
             'Ruff',
             'Black',
             'mypy',
-            'uv'
+            'uv',
+            'CI'
 
         ],
         features: ['Corporation memory', 'AI Meeting Summary', 'Handling data from document flow'],
@@ -77,7 +78,15 @@ export const projects = [
         name: 'RAG Benchmark',
         type: 'EVALUATION FRAMEWORK',
         icon: Boxes, desc: 'Framework for testing and evaluating Retrieval Augmented Generation systems.',
-        tags: ['Python', 'RAG', 'LLM', 'Vector Database'],
+        tags: [
+            'Python',
+            'RAG',
+            'LLM',
+            'Vector Database',
+            'CI',
+            'AnyIO',
+            'Pydantic',
+        ],
         features: ['Retrieval tests', 'Quality metrics', 'Model comparison'],
         link: 'https://github.com/vitaliyparygin/rag-benchmark'
     },

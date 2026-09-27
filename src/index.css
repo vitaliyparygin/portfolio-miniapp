@@ -335,7 +335,23 @@ h1 em {
 .terminal-bars b:nth-child(5) {
     height: 23px
 }
+.terminal-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #36533e;
+    cursor: pointer;
+}
 
+.terminal-dot.active {
+    background: #baff6b;
+}
+
+.terminal-dot:hover {
+    transform: scale(1.2);
+}
 .section {
     padding: 100px 0;
     border-top: 1px solid #17251b
