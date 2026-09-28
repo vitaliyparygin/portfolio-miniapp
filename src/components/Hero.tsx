@@ -1,9 +1,8 @@
 import {motion} from 'framer-motion'
 import {ArrowDownToLine, ArrowUpRight, Bot, Github, Send} from 'lucide-react'
 import {portfolio} from '../data/portfolio'
-import {terminalSlides} from '../data/slider'
-import React, { useState } from 'react';
-
+import {heroSlides} from '../data/slider'
+import React, { useEffect, useState } from 'react';
 
 
 export function Hero({
@@ -11,7 +10,16 @@ export function Hero({
          }
      }: { onAsk?: () => void }) {
     const [activeSlide, setActiveSlide] = useState(0)
-    const slide = terminalSlides[activeSlide]
+    useEffect(() => {
+        const timer = window.setTimeout(() => {
+            setActiveSlide((current) =>
+                (current + 1) % heroSlides.length
+            )
+        }, 5000)
+
+        return () => window.clearTimeout(timer)
+    }, [activeSlide])
+    const slide = heroSlides[activeSlide]
     const telegram = `https://t.me/${import.meta.env.VITE_TELEGRAM_USERNAME || portfolio.telegram}`
     return <section className="hero">
         <div className="hero-orb orb-one"/>
@@ -19,9 +27,9 @@ export function Hero({
         <motion.div initial={{opacity: 0, y: 24}} animate={{opacity: 1, y: 0}} transition={{duration: .7}}
                     className="hero-content">
             <div className="availability"><i/> Available for select projects</div>
-            <p className="hero-kicker">{portfolio.role}</p>
+            <p className="hero-kicker">{slide.kicker}</p>
             <h1>{portfolio.name}</h1>
-            <p className="hero-lead">{portfolio.desc}</p>
+            <p className="hero-lead">{slide.description}</p>
             <div className="hero-actions">
                 <a className="button button-primary" href={portfolio.cv.download} download><ArrowDownToLine
                     size={17}/> Download CV</a>
@@ -54,24 +62,25 @@ export function Hero({
                 <b>{portfolio.bash_user}</b>
             </div>
             <div className="terminal-body">
-                <p><i>$</i> {slide.command}</p>
+                <p>
+                    <i>$</i> {slide.command}
+                </p>
 
                 <strong>{slide.title}</strong>
 
-                <p><i>$</i> {slide.command2}</p>
+                <p>
+                    <i>$</i> {slide.statusLabel}
+                </p>
 
-                <span className="online">{slide.title2}</span>
-
-                <p><i>$</i> {slide.command3}</p>
-
-                <span className="online">{slide.title3}</span>
+                <span className="online">● {slide.status}</span>
 
                 <div className="terminal-bars">
-                    <b/>
-                    <b/>
-                    <b/>
-                    <b/>
-                    <b/>
+                    {slide.bars.map((height, index) => (
+                        <b
+                            key={`${activeSlide}-${index}`}
+                            style={{ height: `${height * 10}px` }}
+                        />
+                    ))}
                 </div>
             </div>
         </motion.div>

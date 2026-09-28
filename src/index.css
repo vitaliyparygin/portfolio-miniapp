@@ -282,7 +282,8 @@ h1 em {
 }
 
 .terminal-body p {
-    margin-bottom: 8px
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 .terminal-body i {
@@ -299,21 +300,33 @@ h1 em {
 
 .online {
     color: #9efa67;
-    font-size: 11px
+    font-size: 11px;
+    margin-bottom: 20px;
 }
 
 .terminal-bars {
-    height: 44px;
     display: flex;
-    gap: 5px;
-    align-items: end;
-    margin-top: 24px
+    align-items: flex-end;
+    gap: 8px;
 }
 
 .terminal-bars b {
-    background: linear-gradient(#8cff66, #1d7247);
-    width: 12px;
-    border-radius: 2px
+    display: block;
+    width: 18px;
+    min-height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to top, #239447, #9cff5a);
+    transition: height 0.5s ease;
+    margin-top: 26px;
+}
+
+@keyframes terminalPulse {
+    from {
+        opacity: .65;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .terminal-bars b:nth-child(1) {
