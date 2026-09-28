@@ -25,7 +25,12 @@ describe("Hero", () => {
     expect(portfolio.name).not.toBe("");
     expect(portfolio.github.url).toMatch(/^https:\/\/github.com/);
     expect(projects.length).toBeGreaterThan(0);
-    expect(portfolio.cv.download).toMatch(/\.pdf$/);
+    expect(portfolio.cv.download).toContain(
+    "https://docs.google.com/document/d/"
+    );
+    expect(portfolio.cv.download).toContain(
+        "/export?format=pdf"
+    );
   });
 
   it("renders developer role", () => {

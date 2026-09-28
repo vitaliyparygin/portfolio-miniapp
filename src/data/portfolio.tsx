@@ -13,7 +13,7 @@ export const portfolio = {
         label: "github.com/vitaliyparygin",
     },
     cv: {
-        download: "/cv/Vitaliy_Parygin_CV.pdf",
+        download: "https://docs.google.com/document/d/176CAPQHNwcPLE78l6L6FzuaYX7sT0TCBm10PeTj9eKU/export?format=pdf",
     },
     desc: "Building AI agents, RAG systems and backend platforms using Python, FastAPI and Large Language Models.",
 

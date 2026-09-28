@@ -1,14 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, test } from "vitest"
+import { portfolio } from "../data/portfolio"
 
 describe("CV", () => {
-  it("PDF file exists", () => {
-    const file = path.resolve(
-      process.cwd(),
-      "public/cv/Vitaliy_Parygin_CV.pdf"
-    );
-
-    expect(fs.existsSync(file)).toBe(true);
-  });
-});
+    test("CV download URL is valid", () => {
+        expect(portfolio.cv.download).toMatch(
+            /^https:\/\/docs\.google\.com\/document\/d\/.+\/export\?format=pdf$/
+        )
+    })
+})
