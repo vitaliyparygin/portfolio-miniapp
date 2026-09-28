@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 import Hero from "../components/Hero";
 import { portfolio } from "../data/portfolio";
+import { heroSlides } from "../data/slider";
 import {projects} from "../data/projects";
 
 vi.mock("framer-motion", () => ({
@@ -31,7 +32,7 @@ describe("Hero", () => {
     render(<Hero />);
 
     expect(
-      screen.getByText(portfolio.role)
+      screen.getByText(heroSlides[0].kicker)
     ).toBeInTheDocument();
   });
 });
