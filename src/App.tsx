@@ -11,6 +11,8 @@ import {initTelegram} from './components/TelegramInit'
 import WebApp from "@twa-dev/sdk";
 import {knowledge} from "./data/faq";
 import {portfolio} from "./data/portfolio";
+import TechnicalPartner from "./pages/TechnicalPartner";
+import BusinessAutomation from "./pages/BusinessAutomation";
 
 const normalizeQuestion = (value: string) =>
     value.toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
@@ -84,6 +86,15 @@ export default function App() {
         WebApp.setHeaderColor("#000000");
         WebApp.setBackgroundColor("#000000");
       }, []);
+
+    if (window.location.pathname === "/technical-partner") {
+      return <TechnicalPartner />;
+    }
+    
+    if (window.location.pathname === "/business-automation") {
+      return <BusinessAutomation />;
+    }
+
     return <>
         <main>
             <nav><a className="brand" href="#top"><span>V</span> {portfolio.firstName}<span className="brand-dim">.AI</span></a>

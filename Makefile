@@ -3,3 +3,8 @@ run:
 
 test:
 	npm run test:run
+
+check:
+	npm run check
+
+
