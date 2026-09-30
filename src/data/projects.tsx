@@ -39,7 +39,8 @@ export const projects = [
 
         ],
         features: ['Corporation memory', 'AI Meeting Summary', 'Handling data from document flow'],
-        link: 'https://github.com/vitaliyparygin/erp-ai-assistant'
+        link: 'https://github.com/vitaliyparygin/erp-ai-assistant',
+        allowed: 'commercial'
     },
     {
         name: 'AI phone secretary',
@@ -50,6 +51,7 @@ export const projects = [
         tags: ['Python', 'Telegram Bot', 'FastAPI', 'Docker',  'Uvicorn', 'Pydantic', 'SQLAlchemy', 'Asyncpg',
         'Alembic', 'Greenlet', 'Faster-whisper', 'Asterisk', 'RTP', 'NAT', 'SIP'],
         features: ['recording and analysis of voice messages', 'Filters incoming phone calls', 'FAQ answer', 'Instant answers'],
+        allowed: 'commercial'
     },
     {
         name: 'AI Product Manager',
@@ -57,6 +59,7 @@ export const projects = [
         icon: Glasses, desc: 'AI Product manager Agent. Knows everything about projects. Presents and answers questions about projects and more.',
         tags: ['Python', 'FastAPI', 'Docker', 'LLM', 'Ollama', 'Pydantic', 'anyio'],
         features: ['Corporation network', 'Collaboration with team AI agents', 'Knowledge base'],
+        allowed: 'commercial'
     },
     {
         name: 'AI Meeting Agent',
@@ -66,6 +69,7 @@ export const projects = [
         tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'LLM', 'Ollama'],
         features: ['Corporation network', 'Collaboration with team AI agents', 'Knowledge base', 'Send Emails',
             'Manage Task', 'Assigns Tasks'],
+        allowed: 'commercial'
     },
     {
         name: 'AI Home OS',
@@ -73,6 +77,7 @@ export const projects = [
         icon: Bot, desc: 'AI assistant platform for home and business automation.',
         tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'LLM', 'Ollama'],
         features: ['Personal memory', 'AI agents', 'Telegram integration', 'Knowledge base'],
+        allowed: 'private'
     },
     {
         name: 'RAG Benchmark',
@@ -88,7 +93,8 @@ export const projects = [
             'Pydantic',
         ],
         features: ['Retrieval tests', 'Quality metrics', 'Model comparison'],
-        link: 'https://github.com/vitaliyparygin/rag-benchmark'
+        link: 'https://github.com/vitaliyparygin/rag-benchmark',
+        allowed: 'public'
     },
     {
         name: 'AI Support Bot',
@@ -96,6 +102,7 @@ export const projects = [
         icon: MessageSquareMore, desc: 'AI customer support assistant with FAQ search and order automation.',
         tags: ['Python', 'Telegram Bot', 'FastAPI', 'Docker'],
         features: ['FAQ search', 'Order automation', 'Instant answers'],
+        allowed: 'commercial'
 
     },
 ]

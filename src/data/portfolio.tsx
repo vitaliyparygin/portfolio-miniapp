@@ -6,7 +6,6 @@ export const portfolio = {
     email: "vitaliy.parygin@gmail.com",
     telegram: "betal2003",
     role: "AI Backend Engineer",
-    bash_role: "AI_BACKEND_ENGINEER",
     bash_user: "vitaliy@ai:~",
     github: {
         url: "https://github.com/vitaliyparygin",

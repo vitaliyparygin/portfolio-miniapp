@@ -111,7 +111,7 @@ export default function TechnicalPartner() {
         <header className="border-b border-white/10">
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
             <a href="/" className="font-mono text-sm text-white/70 hover:text-white">
-              ← Vitalii.AI
+              ← {portfolio.firstName}.AI
             </a>
 
           </nav>
@@ -162,7 +162,7 @@ export default function TechnicalPartner() {
 
         <footer className="border-t border-white/10">
           <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-white/40">
-            © {new Date().getFullYear()} Vitalii Parygin · AI & Software Engineering
+            © {new Date().getFullYear()} {portfolio.name} · AI & Software Engineering
           </div>
         </footer>
       </div>

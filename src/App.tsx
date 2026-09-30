@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {AnimatePresence, motion} from 'framer-motion'
-import {Bot, ChevronRight, Send, X} from 'lucide-react'
+import {Bot, ChevronRight, Indent, Send, X} from 'lucide-react'
 import {Hero} from './components/Hero'
 import {About} from './components/About'
 import {Skills} from './components/Skills'
@@ -13,6 +13,7 @@ import {knowledge} from "./data/faq";
 import {portfolio} from "./data/portfolio";
 import TechnicalPartner from "./pages/TechnicalPartner";
 import BusinessAutomation from "./pages/BusinessAutomation";
+import Investment from "./pages/Investment";
 
 const normalizeQuestion = (value: string) =>
     value.toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
@@ -90,9 +91,13 @@ export default function App() {
     if (window.location.pathname === "/technical-partner") {
       return <TechnicalPartner />;
     }
-    
+
     if (window.location.pathname === "/business-automation") {
       return <BusinessAutomation />;
+    }
+
+    if (window.location.pathname === "/investment") {
+      return <Investment />;
     }
 
     return <>
