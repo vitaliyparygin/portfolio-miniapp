@@ -3,22 +3,18 @@ import {ArrowUpRight, Github} from 'lucide-react'
 import {SectionHeading} from './SectionHeading'
 import {projects} from '../data/projects'
 type ProjectVisibility = "commercial" | "private" | "public";
-export function Projects({
-    allowed,
-    eyebrow = "SELECTED WORK",
-    title = "Systems with a point of view.",
-    text = "A selection of AI-powered platforms and developer tools.",
-    featuredFirst = true,
-}: {
-    allowed?: ProjectVisibility;
-    eyebrow?: string;
-    title?: string;
-    text?: string;
-    featuredFirst?: boolean;
-}) {
-    const filteredProjects = allowed
-        ? projects.filter(project => project.allowed === allowed)
-        : projects;
+type ProjectsProps = {
+    technologyFilter?: string[];
+};
+export function Projects({ technologyFilter = [] }: ProjectsProps) {
+    const filteredProjects =
+        technologyFilter.length === 0
+            ? projects
+            : projects.filter((project) =>
+                  technologyFilter.every((technology) =>
+                      project.tags.includes(technology)
+                  )
+              );
 
     return (
         <section id="projects" className="section projects">
@@ -35,9 +31,9 @@ export function Projects({
                     return (
                         <motion.article
                             className={
-                                featuredFirst && index === 0
-                                    ? "project-card featured"
-                                    : "project-card"
+                                index === 0
+                                    ? 'project-card featured'
+                                    : 'project-card'
                             }
                             key={project.name}
                             initial={{ opacity: 0, y: 22 }}
@@ -51,7 +47,7 @@ export function Projects({
                                     <Icon size={24} />
                                 </div>
 
-                                {project.link && (
+                                {project.link ? (
                                     <a
                                         href={project.link}
                                         target="_blank"
@@ -60,7 +56,7 @@ export function Projects({
                                     >
                                         <ArrowUpRight size={19} />
                                     </a>
-                                )}
+                                ) : null}
                             </div>
 
                             <p className="project-type">
@@ -74,22 +70,18 @@ export function Projects({
                             </p>
 
                             <ul>
-                                {project.features.map(feature => (
-                                    <li key={feature}>
-                                        {feature}
-                                    </li>
+                                {project.features.map((feature) => (
+                                    <li key={feature}>{feature}</li>
                                 ))}
                             </ul>
 
                             <div className="tags">
-                                {project.tags.map(tag => (
-                                    <span key={tag}>
-                                        {tag}
-                                    </span>
+                                {project.tags.map((tag) => (
+                                    <span key={tag}>{tag}</span>
                                 ))}
                             </div>
 
-                            {project.link && (
+                            {project.link ? (
                                 <a
                                     href={project.link}
                                     target="_blank"
@@ -99,11 +91,17 @@ export function Projects({
                                     <Github size={15} />
                                     View on GitHub
                                 </a>
-                            )}
+                            ) : null}
                         </motion.article>
                     );
                 })}
             </div>
+
+            {filteredProjects.length === 0 && (
+                <p className="mt-8 text-center text-white/40">
+                    No projects match all selected technologies.
+                </p>
+            )}
         </section>
     );
 }

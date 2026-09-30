@@ -14,6 +14,7 @@ import {portfolio} from "./data/portfolio";
 import TechnicalPartner from "./pages/TechnicalPartner";
 import BusinessAutomation from "./pages/BusinessAutomation";
 import Investment from "./pages/Investment";
+import { StackOverlap } from './components/StackOverlap';
 
 const normalizeQuestion = (value: string) =>
     value.toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
@@ -79,6 +80,7 @@ function AskAI({close}: { close: () => void }) {
 export default function App() {
     const [askOpen, setAskOpen] = useState(false);
     const [name, setName] = useState('');
+    const [technologyFilter, setTechnologyFilter] = useState<string[]>([]);
       useEffect(() => {
         setName(initTelegram().firstName)
         WebApp.ready();
@@ -105,7 +107,10 @@ export default function App() {
             <nav><a className="brand" href="#top"><span>V</span> {portfolio.firstName}<span className="brand-dim">.AI</span></a>
                 <a className="nav-status" href="#contact"><i/> {name ? `Hi, ${name}` : 'Open to work'}</a></nav>
             <div id="top"/>
-            <Hero onAsk={() => setAskOpen(true)}/><About/><Skills/><Projects/>
+            <Hero onAsk={() => setAskOpen(true)}/>
+            <About/>
+            <StackOverlap onFilterChange={setTechnologyFilter} />
+            <Projects technologyFilter={technologyFilter} />
             <section className="section github-strip">
                 <div><p className="eyebrow"><span/> OPEN SOURCE</p><h2>Building in public.</h2></div>
                 <div className="github-side">
@@ -116,7 +121,8 @@ export default function App() {
                        rel="noreferrer"><b>{portfolio.github.label}</b><small>Repositories & contributions
                         →</small></a></div>
             </section>
-            <CVButton/><Contact/></main>
+            <CVButton/>
+            <Contact/></main>
         <AnimatePresence>{askOpen && <AskAI close={() => setAskOpen(false)}/>}</AnimatePresence></>
 }
 
