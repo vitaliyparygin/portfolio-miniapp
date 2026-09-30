@@ -1,20 +1,23 @@
 import {useEffect, useState} from 'react'
 import {AnimatePresence, motion} from 'framer-motion'
 import {Bot, ChevronRight, Indent, Send, X} from 'lucide-react'
+import WebApp from "@twa-dev/sdk";
+
+import {knowledge} from "./data/faq";
+import {portfolio} from "./data/portfolio";
+
+import TechnicalPartner from "./pages/TechnicalPartner";
+import BusinessAutomation from "./pages/BusinessAutomation";
+import Investment from "./pages/Investment";
+
 import {Hero} from './components/Hero'
 import {About} from './components/About'
-import {Skills} from './components/Skills'
 import {Projects} from './components/Projects'
 import {CVButton} from './components/CVButton'
 import {Contact} from './components/Contact'
 import {initTelegram} from './components/TelegramInit'
-import WebApp from "@twa-dev/sdk";
-import {knowledge} from "./data/faq";
-import {portfolio} from "./data/portfolio";
-import TechnicalPartner from "./pages/TechnicalPartner";
-import BusinessAutomation from "./pages/BusinessAutomation";
-import Investment from "./pages/Investment";
 import { StackOverlap } from './components/StackOverlap';
+
 
 const normalizeQuestion = (value: string) =>
     value.toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
@@ -108,19 +111,11 @@ export default function App() {
                 <a className="nav-status" href="#contact"><i/> {name ? `Hi, ${name}` : 'Open to work'}</a></nav>
             <div id="top"/>
             <Hero onAsk={() => setAskOpen(true)}/>
-            <About/>
+
             <StackOverlap onFilterChange={setTechnologyFilter} />
             <Projects technologyFilter={technologyFilter} />
-            <section className="section github-strip">
-                <div><p className="eyebrow"><span/> OPEN SOURCE</p><h2>Building in public.</h2></div>
-                <div className="github-side">
-                    <div className="github-stats">
-                        <span><b>AI</b> agents</span><span><b>RAG</b> systems</span><span><b>OSS</b> projects</span>
-                    </div>
-                    <a className="github-profile" href={portfolio.github.url} target="_blank"
-                       rel="noreferrer"><b>{portfolio.github.label}</b><small>Repositories & contributions
-                        →</small></a></div>
-            </section>
+
+
             <CVButton/>
             <Contact/></main>
         <AnimatePresence>{askOpen && <AskAI close={() => setAskOpen(false)}/>}</AnimatePresence></>

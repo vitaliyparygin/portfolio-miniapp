@@ -1042,3 +1042,128 @@ form button {
         align-items: stretch
     }
 }
+
+
+.engineering-intelligence {
+    width: 100%;
+}
+
+.engineering-intelligence__header {
+    margin-bottom: 2rem;
+}
+
+.engineering-intelligence__eyebrow {
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+}
+
+.engineering-intelligence__title {
+    margin: 0.5rem 0 0;
+    color: var(--text-primary);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.1;
+}
+
+.engineering-intelligence__text {
+    max-width: 680px;
+    margin: 0.75rem 0 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.engineering-intelligence__pipeline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+
+.engineering-intelligence__stage-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.engineering-intelligence__stage {
+    min-height: 40px;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font: inherit;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.engineering-intelligence__stage:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.engineering-intelligence__stage--active {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    background: var(--surface-color);
+}
+
+.engineering-intelligence__arrow {
+    color: var(--text-secondary);
+}
+
+.engineering-intelligence__content {
+    min-height: 100px;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.engineering-intelligence__content-eyebrow {
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+
+.engineering-intelligence__description {
+    max-width: 700px;
+    margin: 0.6rem 0 0;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.engineering-intelligence__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 0.7rem;
+}
+
+@media (max-width: 640px) {
+    .engineering-intelligence__pipeline {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .engineering-intelligence__stage-wrapper {
+        width: 100%;
+    }
+
+    .engineering-intelligence__stage {
+        width: 100%;
+        text-align: left;
+    }
+
+    .engineering-intelligence__arrow {
+        display: none;
+    }
+}
