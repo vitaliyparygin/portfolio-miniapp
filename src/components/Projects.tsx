@@ -1,27 +1,42 @@
-import {motion} from 'framer-motion'
-import {ArrowUpRight, Github} from 'lucide-react'
-import {SectionHeading} from './SectionHeading'
-import {projects} from '../data/projects'
-type ProjectVisibility = "commercial" | "private" | "public";
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Github } from 'lucide-react';
+import { SectionHeading } from './SectionHeading';
+import { projects } from '../data/projects';
+import type { ProjectVisibility } from '../types/project';
+import {
+    filterProjects,
+} from './filterProjects';
+
 type ProjectsProps = {
+    allowed?: ProjectVisibility;
     technologyFilter?: string[];
+
+    eyebrow?: string;
+    title?: string;
+    text?: string;
+    featuredFirst?: boolean;
 };
-export function Projects({ technologyFilter = [] }: ProjectsProps) {
-    const filteredProjects =
-        technologyFilter.length === 0
-            ? projects
-            : projects.filter((project) =>
-                  technologyFilter.every((technology) =>
-                      project.tags.includes(technology)
-                  )
-              );
+
+export function Projects({
+    allowed,
+    technologyFilter = [],
+    eyebrow = 'SELECTED WORK',
+    title = 'Systems with a point of view.',
+    text = 'A selection of AI-powered platforms and developer tools.',
+    featuredFirst = true,
+}: ProjectsProps) {
+
+    const filteredProjects = filterProjects(projects, {
+        allowed,
+        technologyFilter,
+    });
 
     return (
         <section id="projects" className="section projects">
             <SectionHeading
-                eyebrow="SELECTED WORK"
-                title="Systems with a point of view."
-                text="A selection of AI-powered platforms and developer tools."
+                eyebrow={eyebrow}
+                title={title}
+                text={text}
             />
 
             <div className="projects-grid">
@@ -31,7 +46,7 @@ export function Projects({ technologyFilter = [] }: ProjectsProps) {
                     return (
                         <motion.article
                             className={
-                                index === 0
+                                featuredFirst && index === 0
                                     ? 'project-card featured'
                                     : 'project-card'
                             }
@@ -39,7 +54,10 @@ export function Projects({ technologyFilter = [] }: ProjectsProps) {
                             initial={{ opacity: 0, y: 22 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{
+                                delay: index * 0.1,
+                                duration: 0.45
+                            }}
                             whileHover={{ y: -6 }}
                         >
                             <div className="project-top">
@@ -52,7 +70,7 @@ export function Projects({ technologyFilter = [] }: ProjectsProps) {
                                         href={project.link}
                                         target="_blank"
                                         rel="noreferrer"
-                                        aria-label={`View ${project.name} on GitHub`}
+                                        aria-label={`Open ${project.name}`}
                                     >
                                         <ArrowUpRight size={19} />
                                     </a>
@@ -65,7 +83,7 @@ export function Projects({ technologyFilter = [] }: ProjectsProps) {
 
                             <h3>{project.name}</h3>
 
-                            <p className="project-desc">
+                            <p className="project-description">
                                 {project.desc}
                             </p>
 
@@ -99,7 +117,7 @@ export function Projects({ technologyFilter = [] }: ProjectsProps) {
 
             {filteredProjects.length === 0 && (
                 <p className="mt-8 text-center text-white/40">
-                    No projects match all selected technologies.
+                    No projects match the selected filters.
                 </p>
             )}
         </section>

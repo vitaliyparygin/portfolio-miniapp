@@ -1,6 +1,15 @@
-import {ArrowUpRight, Bot, Boxes, Github, MessageSquareMore, Glasses} from 'lucide-react'
+import {
+    ArrowUpRight,
+    Bot,
+    Boxes,
+    Github,
+    MessageSquareMore,
+    Glasses,
+} from 'lucide-react';
 
-export const projects = [
+import type { Project } from '../types/project';
+
+export const projects: Project[] = [
 
     {
         name: 'ERP AI Assistant',
