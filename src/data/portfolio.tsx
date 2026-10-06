@@ -7,6 +7,7 @@ export const portfolio = {
     telegram: "betal2003",
     role: "AI Backend Engineer",
     bash_user: "vitaliy@ai:~",
+    telegram_version_site: "https://t.me/vitaliys_assistant_bot/portfolio",
     github: {
         url: "https://github.com/vitaliyparygin",
         label: "github.com/vitaliyparygin",

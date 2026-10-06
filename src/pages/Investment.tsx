@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowUpRight, Github, Send, Mail } from "lucide-react";
+import { ArrowUpRight, Github,  Mail } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import { projects } from "../data/projects";
 import {Projects} from '../components/Projects'
@@ -8,9 +8,11 @@ const siteUrl = "https://vitaliy-parygin-portfolio.vercel.app";
 
 function SeoHead() {
   useEffect(() => {
-    const title = "AI & Software Projects | Investment & Strategic Partnership";
+    const title =
+      "AI Products & Startup Opportunities | Vitalii Parygin";
+
     const description =
-      "Explore AI and software projects built by Vitalii Parygin with commercial potential. Selected projects are open to investment and strategic partnerships.";
+      "AI product ideas, technology projects and startup opportunities focused on AI systems, business automation, intelligent assistants and AI-powered software.";
 
     document.title = title;
 
@@ -23,7 +25,7 @@ function SeoHead() {
 
       if (!element) {
         element = document.createElement("meta");
-        element.setAttribute(attribute, attribute);
+        element.setAttribute(attribute, value);
         document.head.appendChild(element);
       }
 
@@ -36,11 +38,20 @@ function SeoHead() {
     setMeta('meta[property="og:type"]', "property", "website");
     setMeta('meta[property="og:title"]', "property", title);
     setMeta('meta[property="og:description"]', "property", description);
-    setMeta('meta[property="og:url"]', "property", `${siteUrl}/investment`);
-    setMeta('meta[property="og:site_name"]', "property", "Vitalii Parygin");
+    setMeta(
+      'meta[property="og:url"]',
+      "property",
+      `${siteUrl}/investment`,
+    );
+    setMeta(
+      'meta[property="og:site_name"]',
+      "property",
+      "Vitalii Parygin",
+    );
 
-    let canonical =
-      document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    let canonical = document.querySelector<HTMLLinkElement>(
+      'link[rel="canonical"]',
+    );
 
     if (!canonical) {
       canonical = document.createElement("link");
@@ -51,13 +62,7 @@ function SeoHead() {
     canonical.href = `${siteUrl}/investment`;
 
     return () => {
-      document.title = "Vitaliy AI Portfolio";
-
-      setMeta(
-        'meta[name="description"]',
-        "name",
-        "Vitaliy Parygin — AI Backend Engineer",
-      );
+      document.title = "Vitalii Parygin — AI Systems Engineer";
 
       if (canonical) {
         canonical.href = `${siteUrl}/`;
@@ -73,8 +78,6 @@ const commercialProjects = projects.filter(
 );
 
 export default function Investment() {
-  const telegram =
-    import.meta.env.VITE_TELEGRAM_USERNAME || portfolio.telegram;
   const email = import.meta.env.VITE_EMAIL || portfolio.email;
   return (
     <>
@@ -102,18 +105,17 @@ export default function Investment() {
               </p>
 
               <h1 className="mt-4 text-4xl font-semibold leading-tight md:text-6xl">
-                AI & software projects
+                AI products
                 <br />
                 <span className="text-white/55">
-                  open for investment & partnership.
+                  worth building together.
                 </span>
               </h1>
 
               <p className="mt-7 max-w-3xl text-xl leading-9 text-white/65">
-                I build AI products, automation systems and software
-                infrastructure focused on practical business applications.
-                Selected projects are being developed with commercial
-                potential and are open to investment or strategic partnership.
+                I am interested in building practical AI products that solve real business
+                problems. This page presents selected product ideas, technology projects
+                and opportunities for technical collaboration.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
@@ -275,6 +277,34 @@ export default function Investment() {
               </div>
             </div>
           </section>
+
+          <section className="border-y border-white/10">
+            <div className="mx-auto max-w-6xl px-6 py-20">
+              <SectionHeading
+                eyebrow="What I build"
+                title="AI systems with real business applications"
+                text="The focus is on products where AI can create measurable value rather than AI features added without a clear business purpose."
+              />
+
+              <div className="grid gap-5 md:grid-cols-3">
+                <InfoCard
+                  title="AI Assistants"
+                  text="Intelligent assistants that work with company knowledge, documents, communication and business systems."
+                />
+
+                <InfoCard
+                  title="AI Agents"
+                  text="Agentic systems that use tools, coordinate multiple steps and automate complex business workflows."
+                />
+
+                <InfoCard
+                  title="Business Automation"
+                  text="AI-powered automation connecting ERP, databases, APIs, documents and operational workflows."
+                />
+              </div>
+            </div>
+          </section>
+
         </main>
 
         <footer className="border-t border-white/10">

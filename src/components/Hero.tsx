@@ -23,23 +23,32 @@ export function Hero({
     const telegram = `https://t.me/${import.meta.env.VITE_TELEGRAM_USERNAME || portfolio.telegram}`
     return <section className="hero">
         <div className="hero-orb orb-one"/>
-        <div className="hero-orb orb-two"/>
-        <motion.div initial={{opacity: 0, y: 24}} animate={{opacity: 1, y: 0}} transition={{duration: .7}}
-                    className="hero-content">
-            <div className="availability"><i/> Available for select projects</div>
-            <p className="hero-kicker">{slide.kicker}</p>
-            <h1>{portfolio.name}</h1>
-            <p className="hero-lead">{slide.description}</p>
-            <div className="hero-actions">
-                <a className="button button-primary" href={portfolio.cv.download} download><ArrowDownToLine
-                    size={17}/> Download CV</a>
-                <a className="button button-ghost" href={portfolio.github.url} target="_blank"
-                   rel="noreferrer"><Github size={17}/> GitHub <ArrowUpRight size={14}/></a>
-            </div>
-            <div className="hero-links"><a href={telegram}><Send size={15}/> Contact Telegram</a>
-                <button onClick={onAsk}><Bot size={16}/> Ask my AI</button>
-            </div>
-        </motion.div>
+            <div className="hero-orb orb-two"/>
+                <motion.div initial={{opacity: 0, y: 24}} animate={{opacity: 1, y: 0}} transition={{duration: .7}}
+                            className="hero-content">
+                    <div className="availability"><i/> Available for select projects</div>
+                    <p className="hero-kicker">{slide.kicker}</p>
+                    <h1>{portfolio.name}</h1>
+                    <p className="hero-lead">{slide.description}</p>
+                    <div className="hero-actions">
+                        <a className="button button-primary" href={portfolio.cv.download} download>
+                            <ArrowDownToLine size={17}/> Download CV</a>
+                        <a className="button button-ghost" href={portfolio.github.url} target="_blank"
+                           rel="noreferrer"><Github size={17}/> GitHub <ArrowUpRight size={14}/></a>
+                        <a
+                          href={portfolio.telegram_version_site}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-5 py-3 text-white/75"
+                        >
+                          Explore via Telegram
+                          <ArrowUpRight size={16} />
+                        </a>
+                    </div>
+                    <div className="hero-links"><a href={telegram}><Send size={15}/> Contact Telegram</a>
+                        <button onClick={onAsk}><Bot size={16}/> Ask my AI</button>
+                    </div>
+                </motion.div>
         <motion.div initial={{opacity: 0, scale: .9}} animate={{opacity: 1, scale: 1}} transition={{delay: .25}}
                     className="terminal-card">
             <div className="terminal-top">

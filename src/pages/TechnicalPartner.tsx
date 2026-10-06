@@ -1,14 +1,16 @@
 import { useEffect } from "react";
-import {ArrowUpRight, Github, Mail, Send} from "lucide-react";
+import {ArrowUpRight, Mail} from "lucide-react";
 import { portfolio } from "../data/portfolio";
 
 const siteUrl = "https://vitaliy-parygin-portfolio.vercel.app";
 
 function SeoHead() {
   useEffect(() => {
-    const title = "Technical Partner for Your Startup | Vitalii Parygin";
+    const title =
+      "AI Technical Partner | AI Product & MVP Development | Vitalii Parygin";
+
     const description =
-      "Have a startup idea but need a technical partner? I help founders turn ideas into AI and software products, from architecture and MVP to production systems.";
+      "Looking for an AI technical partner? I design and build AI products, LLM applications, AI agents, backend systems and business automation from idea to working MVP.";
 
     document.title = title;
 
@@ -30,6 +32,7 @@ function SeoHead() {
 
     setMeta('meta[name="description"]', "name", description);
     setMeta('meta[name="robots"]', "name", "index, follow");
+
     setMeta('meta[property="og:type"]', "property", "website");
     setMeta('meta[property="og:title"]', "property", title);
     setMeta('meta[property="og:description"]', "property", description);
@@ -38,7 +41,11 @@ function SeoHead() {
       "property",
       `${siteUrl}/technical-partner`,
     );
-    setMeta('meta[property="og:site_name"]', "property", "Vitalii Parygin");
+    setMeta(
+      'meta[property="og:site_name"]',
+      "property",
+      "Vitalii Parygin",
+    );
 
     let canonical = document.querySelector<HTMLLinkElement>(
       'link[rel="canonical"]',
@@ -53,14 +60,11 @@ function SeoHead() {
     canonical.href = `${siteUrl}/technical-partner`;
 
     return () => {
-      document.title = "Vitaliy AI Portfolio";
-      setMeta(
-        'meta[name="description"]',
-        "name",
-        "Vitaliy Parygin — AI Backend Engineer",
-      );
-      setMeta('meta[name="robots"]', "name", "index, follow");
-      if (canonical) canonical.href = `${siteUrl}/`;
+      document.title = "Vitalii Parygin — AI Systems Engineer";
+
+      if (canonical) {
+        canonical.href = `${siteUrl}/`;
+      }
     };
   }, []);
 
@@ -100,8 +104,6 @@ const technologies = [
 ];
 
 export default function TechnicalPartner() {
-  const telegram =
-    import.meta.env.VITE_TELEGRAM_USERNAME || portfolio.telegram;
   const email = import.meta.env.VITE_EMAIL || portfolio.email;
   return (
     <>
@@ -125,15 +127,17 @@ export default function TechnicalPartner() {
               </p>
 
               <h1 className="mt-4 text-4xl font-semibold leading-tight md:text-6xl">
-                Have a startup idea?
+                AI technical partner
                 <br />
-                <span className="text-white/55">Let&apos;s build it.</span>
+                <span className="text-white/55">
+                  for building real products.
+                </span>
               </h1>
 
               <p className="mt-7 max-w-3xl text-xl leading-9 text-white/65">
-                You have an idea for a product, but need someone who can turn
-                it into a real technical system. I can take responsibility for
-                the software and AI side of the project.
+                I help founders and companies turn AI product ideas into working systems.
+                I design the architecture and build LLM applications, AI agents,
+                backend services, integrations and business automation.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
@@ -155,14 +159,40 @@ export default function TechnicalPartner() {
             </div>
           </section>
 
+          <section className="border-y border-white/10">
+            <div className="mx-auto max-w-6xl px-6 py-20">
+              <SectionHeading
+                eyebrow="Technical partnership"
+                title="From idea to working AI product"
+                text="I can take responsibility for the technical side of an AI product, from architecture and MVP development to integrations and production systems."
+              />
 
+              <div className="grid gap-5 md:grid-cols-3">
+                <InfoCard
+                  title="AI Product Architecture"
+                  text="Design the architecture for LLM applications, AI agents, APIs, databases and external integrations."
+                />
+
+                <InfoCard
+                  title="MVP Development"
+                  text="Build a focused working MVP that validates the product idea before investing in a larger system."
+                />
+
+                <InfoCard
+                  title="Long-Term Engineering"
+                  text="Evolve the MVP into a reliable production system with integrations, automation and scalable backend infrastructure."
+                />
+              </div>
+            </div>
+          </section>
 
 
         </main>
 
         <footer className="border-t border-white/10">
           <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-white/40">
-            © {new Date().getFullYear()} {portfolio.name} · AI & Software Engineering
+            © {new Date().getFullYear()} {portfolio.name} · AI Systems Engineer ·
+            AI Agents · Business Automation · Odoo · Full-Stack Development
           </div>
         </footer>
       </div>

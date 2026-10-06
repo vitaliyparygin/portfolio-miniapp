@@ -6,9 +6,11 @@ const siteUrl = "https://vitaliy-parygin-portfolio.vercel.app";
 
 function SeoHead() {
   useEffect(() => {
-    const title = "AI & Business Automation | Vitalii Parygin";
+    const title =
+      "AI Business Automation | AI Agents, Odoo & ERP | Vitalii Parygin";
+
     const description =
-      "Automate business processes with AI and software. I build AI assistants, AI agents, integrations, ERP automation and custom business systems.";
+      "AI business automation for companies: AI assistants, AI agents, RAG, Odoo and ERP automation, integrations and custom AI systems.";
 
     document.title = title;
 
@@ -30,6 +32,7 @@ function SeoHead() {
 
     setMeta('meta[name="description"]', "name", description);
     setMeta('meta[name="robots"]', "name", "index, follow");
+
     setMeta('meta[property="og:type"]', "property", "website");
     setMeta('meta[property="og:title"]', "property", title);
     setMeta('meta[property="og:description"]', "property", description);
@@ -38,7 +41,11 @@ function SeoHead() {
       "property",
       `${siteUrl}/business-automation`,
     );
-    setMeta('meta[property="og:site_name"]', "property", "Vitalii Parygin");
+    setMeta(
+      'meta[property="og:site_name"]',
+      "property",
+      "Vitalii Parygin",
+    );
 
     let canonical = document.querySelector<HTMLLinkElement>(
       'link[rel="canonical"]',
@@ -53,14 +60,16 @@ function SeoHead() {
     canonical.href = `${siteUrl}/business-automation`;
 
     return () => {
-      document.title = "Vitaliy AI Portfolio";
+      document.title = "Vitalii Parygin — AI Systems Engineer";
       setMeta(
         'meta[name="description"]',
         "name",
-        "Vitaliy Parygin — AI Backend Engineer",
+        "AI Systems Engineer building AI-powered business systems, AI agents, LLM applications and business automation.",
       );
-      setMeta('meta[name="robots"]', "name", "index, follow");
-      if (canonical) canonical.href = `${siteUrl}/`;
+
+      if (canonical) {
+        canonical.href = `${siteUrl}/`;
+      }
     };
   }, []);
 
@@ -70,27 +79,27 @@ function SeoHead() {
 const services = [
   {
     title: "Business Process Automation",
-    text: "Analyze repetitive work and turn manual workflows into software-driven processes.",
+    text: "Turn repetitive manual workflows into reliable software-driven business processes.",
   },
   {
     title: "AI Assistants",
-    text: "Build internal assistants that work with company knowledge, documents, systems and business data.",
+    text: "Build AI assistants that work with company documents, internal knowledge, business data and existing systems.",
   },
   {
     title: "AI Agents",
-    text: "Create agents that can use tools, perform tasks and coordinate several steps of a business process.",
+    text: "Create AI agents that use tools, make decisions and execute multi-step business tasks.",
   },
   {
     title: "RAG & Company Knowledge",
-    text: "Connect AI to internal documents and knowledge bases so employees can work with company information through natural language.",
+    text: "Connect LLM applications to internal documents, knowledge bases and company data using retrieval-augmented generation.",
   },
   {
-    title: "ERP & Odoo Automation",
-    text: "Extend ERP workflows, integrate external services and automate operational processes around Odoo and other systems.",
+    title: "Odoo & ERP Automation",
+    text: "Extend Odoo and ERP workflows, integrate external services and automate operational processes.",
   },
   {
     title: "Custom AI Systems",
-    text: "Design larger systems combining backend services, AI models, agents, databases and integrations.",
+    text: "Design complete AI systems combining LLMs, agents, backend services, databases, APIs and business integrations.",
   },
 ];
 
@@ -129,15 +138,17 @@ export default function BusinessAutomation() {
               </p>
 
               <h1 className="mt-4 text-4xl font-semibold leading-tight md:text-6xl">
-                Automate your business
+                AI business automation
                 <br />
-                <span className="text-white/55">with AI & software.</span>
+                <span className="text-white/55">
+                  with AI agents, software & ERP integration.
+                </span>
               </h1>
 
               <p className="mt-7 max-w-3xl text-xl leading-9 text-white/65">
-                If your company relies on repetitive manual work, disconnected
-                systems or complex workflows, I can design and build software
-                and AI automation around your actual business process.
+                I design and build AI-powered business systems that automate repetitive
+                workflows, connect company data and integrate AI with existing ERP,
+                Odoo, databases and business software.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
@@ -289,7 +300,8 @@ export default function BusinessAutomation() {
 
         <footer className="border-t border-white/10">
           <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-white/40">
-            © {new Date().getFullYear()} {portfolio.name} · AI & Software Engineering
+            © {new Date().getFullYear()} {portfolio.name} · AI Systems Engineer ·
+            AI Agents · Business Automation · Odoo · Full-Stack Development
           </div>
         </footer>
       </div>

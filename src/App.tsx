@@ -17,6 +17,7 @@ import {CVButton} from './components/CVButton'
 import {Contact} from './components/Contact'
 import {initTelegram} from './components/TelegramInit'
 import { StackOverlap } from './components/StackOverlap';
+import {FeatureTelegram} from './components/featureTelegram'
 
 
 const normalizeQuestion = (value: string) =>
@@ -116,6 +117,7 @@ export default function App() {
             <Projects technologyFilter={technologyFilter} />
 
 
+            <FeatureTelegram/>
             <CVButton/>
             <Contact/></main>
         <AnimatePresence>{askOpen && <AskAI close={() => setAskOpen(false)}/>}</AnimatePresence></>
