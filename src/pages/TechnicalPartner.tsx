@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import {ArrowUpRight, Mail} from "lucide-react";
 import { portfolio } from "../data/portfolio";
-
+import {Footer} from "../components/Footer";
 const siteUrl = "https://vitaliy-parygin-portfolio.vercel.app";
 
 function SeoHead() {
@@ -122,17 +122,18 @@ export default function TechnicalPartner() {
         <main>
           <section className="mx-auto max-w-6xl px-6 pb-24 pt-20 md:pt-28">
             <div className="max-w-4xl">
-              <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+              <p className="eyebrow">
+                <span></span>
                 For founders
               </p>
 
-              <h1 className="mt-4 text-4xl font-semibold leading-tight md:text-6xl">
+              <h2>
                 AI technical partner
                 <br />
                 <span className="text-white/55">
                   for building real products.
                 </span>
-              </h1>
+              </h2>
 
               <p className="mt-7 max-w-3xl text-xl leading-9 text-white/65">
                 I help founders and companies turn AI product ideas into working systems.
@@ -184,17 +185,13 @@ export default function TechnicalPartner() {
                 />
               </div>
             </div>
+            <Footer/>
           </section>
 
 
         </main>
 
-        <footer className="border-t border-white/10">
-          <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-white/40">
-            © {new Date().getFullYear()} {portfolio.name} · AI Systems Engineer ·
-            AI Agents · Business Automation · Odoo · Full-Stack Development
-          </div>
-        </footer>
+
       </div>
     </>
   );
@@ -211,10 +208,11 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-10 max-w-3xl">
-      <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+      <p className="eyebrow">
+        <span></span>
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-3xl font-semibold md:text-4xl">{title}</h2>
+      <h2 >{title}</h2>
       {text && (
         <p className="mt-4 text-lg leading-8 text-white/60">{text}</p>
       )}

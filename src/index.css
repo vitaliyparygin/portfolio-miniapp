@@ -646,8 +646,9 @@ h1 em {
 footer {
     font: 10px 'DM Mono';
     color: #607365;
-    margin-top: 73px;
-    padding-bottom: 28px
+    margin-top: 0px;
+    padding-bottom: 28px;
+    text-align: center;
 }
 
 footer span {

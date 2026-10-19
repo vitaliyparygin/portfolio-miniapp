@@ -3,6 +3,7 @@ import { ArrowUpRight, Github,  Mail } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import { projects } from "../data/projects";
 import {Projects} from '../components/Projects'
+import {Footer} from "../components/Footer";
 
 const siteUrl = "https://vitaliy-parygin-portfolio.vercel.app";
 
@@ -100,7 +101,8 @@ export default function Investment() {
           {/* Hero */}
           <section className="mx-auto max-w-6xl px-6 pb-20 pt-20 md:pt-28">
             <div className="max-w-4xl">
-              <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+              <p className="eyebrow">
+                <span></span>
                 AI · Software · Commercial Projects
               </p>
 
@@ -239,7 +241,8 @@ export default function Investment() {
           <section className="border-t border-white/10">
             <div className="mx-auto max-w-6xl px-6 py-24">
               <div className="max-w-3xl">
-                <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+                <p className="eyebrow">
+                  <span></span>
                   Investors & partners
                 </p>
 
@@ -303,16 +306,12 @@ export default function Investment() {
                 />
               </div>
             </div>
+            <Footer/>
           </section>
 
         </main>
 
-        <footer className="border-t border-white/10">
-          <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-white/40">
-            © {new Date().getFullYear()} {portfolio.name} · AI & Software
-            Engineering
-          </div>
-        </footer>
+
       </div>
     </>
   );
@@ -329,11 +328,12 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-10 max-w-3xl">
-      <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+      <p className="eyebrow">
+        <span></span>
         {eyebrow}
       </p>
 
-      <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+      <h2 >
         {title}
       </h2>
 
@@ -385,7 +385,7 @@ function ProjectCard({
           )}
 
           <div className="min-w-0">
-            <h3 className="text-xl font-semibold">
+            <h3 >
               {project.name}
             </h3>
 

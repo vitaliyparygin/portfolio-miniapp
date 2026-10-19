@@ -10,6 +10,7 @@ import TechnicalPartner from "./pages/TechnicalPartner";
 import BusinessAutomation from "./pages/BusinessAutomation";
 import Investment from "./pages/Investment";
 
+import {Footer} from "./components/Footer";
 import {Hero} from './components/Hero'
 import {About} from './components/About'
 import {Projects} from './components/Projects'
@@ -23,62 +24,138 @@ import {FeatureTelegram} from './components/featureTelegram'
 const normalizeQuestion = (value: string) =>
     value.toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim()
 
-const getAnswer = (question: string) => {
-    const normalizedQuestion = normalizeQuestion(question)
 
-    // Clicking a suggested question always returns its paired answer.
-    const exactMatch = knowledge.find(({q}) => normalizeQuestion(q) === normalizedQuestion)
-    if (exactMatch) return exactMatch.a
 
-    // For typed questions, choose the dictionary entry with the most shared words.
-    const questionWords = new Set(normalizedQuestion.split(' ').filter(word => word.length > 2))
-    const bestMatch = knowledge
-        .map(entry => ({
-            entry,
-            score: normalizeQuestion(entry.q)
-                .split(' ')
-                .filter(word => questionWords.has(word)).length,
-        }))
-        .sort((a, b) => b.score - a.score)[0]
-
-    return bestMatch?.score
-        ? bestMatch.entry.a
-        : 'I don’t have that information yet. Try one of the suggested questions.'
-}
-
-function AskAI({close}: { close: () => void }) {
-    const [messages, setMessages] = useState<{ role: string; text: string }[]>([{
-        role: 'ai',
-        text: `Hi — I’m '{portfolio.firstName}’s portfolio assistant. What would you like to know?`
-    }]);
+function AskAI({close}: {close: () => void}) {
+    const [sessionId] = useState(() => crypto.randomUUID());
+    const [messages, setMessages] = useState<{role: string; text: string}[]>([
+        {
+            role: 'ai',
+            text: `Hi — I’m ${portfolio.firstName}’s portfolio assistant. What would you like to know?`,
+        },
+    ]);
     const [input, setInput] = useState('');
-    const submit = (question = input) => {
-        if (!question.trim()) return;
-        setMessages(m => [...m, {role: 'user', text: question}, {role: 'ai', text: getAnswer(question)}]);
-        setInput('')
-    }
-    return <motion.div className="ai-overlay" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}
-                       onClick={close}>
-        <motion.div className="ai-dialog" initial={{y: 50, opacity: 0}} animate={{y: 0, opacity: 1}}
-                    exit={{y: 50, opacity: 0}} onClick={e => e.stopPropagation()}>
-            <div className="ai-head"><span><Bot/> Ask my AI <i>beta</i></span>
-                <button onClick={close}><X/></button>
-            </div>
-            <div className="ai-messages">
-                {messages.map((m, i) => <div className={`message ${m.role}`}
-                    key={i}>{m.text}</div>)}</div>
-            <div className="suggestions">
-                {knowledge.map(k => <button key={k.q}
-                    onClick={() => submit(k.q)}>{k.q}<ChevronRight
-                size={14}/></button>)}</div>
-            <form onSubmit={e => {
-                e.preventDefault();
-                submit()
-            }}><input value={input} onChange={e => setInput(e.target.value)} placeholder="Ask about Vitaliy..."/>
-                <button aria-label="Send"><Send size={17}/></button>
-            </form>
+    const [loading, setLoading] = useState(false);
+
+    const submit = async (question = input) => {
+        const message = question.trim();
+
+        if (!message || loading) return;
+
+        setInput('');
+        setLoading(true);
+        setMessages(current => [
+            ...current,
+            {role: 'user', text: message},
+        ]);
+
+        try {
+            const apiUrl = import.meta.env.VITE_AI_APM_API_URL
+                ?.trim()
+                .replace(/\/+$/, '');
+
+            if (!apiUrl || apiUrl.includes('ТВІЙ-ДОМЕН-RAILWAY')) {
+                throw new Error('VITE_AI_APM_API_URL is not configured');
+            }
+
+            const response = await fetch(`${apiUrl}/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionId,
+                    message,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`AI API returned HTTP ${response.status}`);
+            }
+
+            const data: {answer?: string} = await response.json();
+
+            if (!data.answer?.trim()) {
+                throw new Error('AI API returned an empty answer');
+            }
+
+            setMessages(current => [
+                ...current,
+                {role: 'ai', text: data.answer!},
+            ]);
+        } catch (error) {
+            console.error('AI assistant request failed:', error);
+
+            setMessages(current => [
+                ...current,
+                {
+                    role: 'ai',
+                    text: 'The assistant is temporarily unavailable. Please try again later.',
+                },
+            ]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <motion.div
+            className="ai-overlay"
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            onClick={close}
+        >
+            <motion.div
+                className="ai-dialog"
+                initial={{y: 50, opacity: 0}}
+                animate={{y: 0, opacity: 1}}
+                exit={{y: 50, opacity: 0}}
+                onClick={e => e.stopPropagation()}
+            >
+                <div className="ai-head">
+                    <span><Bot/> Ask my AI <i>beta</i></span>
+                    <button onClick={close}><X/></button>
+                </div>
+
+                <div className="ai-messages">
+                    {messages.map((m, i) => (
+                        <div className={`message ${m.role}`} key={i}>
+                            {m.text}
+                        </div>
+                    ))}
+                    {loading && <div className="message ai">Thinking…</div>}
+                </div>
+
+                <div className="suggestions">
+                    {knowledge.map(k => (
+                        <button
+                            key={k.q}
+                            disabled={loading}
+                            onClick={() => void submit(k.q)}
+                        >
+                            {k.q}<ChevronRight size={14}/>
+                        </button>
+                    ))}
+                </div>
+
+                <form onSubmit={e => {
+                    e.preventDefault();
+                    void submit();
+                }}>
+                    <input
+                        value={input}
+                        onChange={e => setInput(e.target.value)}
+                        placeholder="Ask about Vitaliy..."
+                        disabled={loading}
+                    />
+                    <button aria-label="Send" disabled={loading || !input.trim()}>
+                        <Send size={17}/>
+                    </button>
+                </form>
+            </motion.div>
         </motion.div>
-    </motion.div>
+    );
 }
 
 export default function App() {
@@ -119,7 +196,9 @@ export default function App() {
 
             <FeatureTelegram/>
             <CVButton/>
-            <Contact/></main>
+            <Contact/>
+            <Footer/>
+        </main>
         <AnimatePresence>{askOpen && <AskAI close={() => setAskOpen(false)}/>}</AnimatePresence></>
 }
 

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import {ArrowUpRight, Mail, Send} from "lucide-react";
 import { portfolio } from "../data/portfolio";
+import {Footer} from "../components/Footer";
 
 const siteUrl = "https://vitaliy-parygin-portfolio.vercel.app";
 
@@ -131,9 +132,10 @@ export default function BusinessAutomation() {
         </header>
 
         <main>
-          <section className="mx-auto max-w-6xl px-6 pb-24 pt-20 md:pt-28">
+          <section className="section">
             <div className="max-w-4xl">
-              <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+              <p className="eyebrow">
+                <span></span>
                 For businesses
               </p>
 
@@ -145,7 +147,7 @@ export default function BusinessAutomation() {
                 </span>
               </h1>
 
-              <p className="mt-7 max-w-3xl text-xl leading-9 text-white/65">
+              <p className="section-copy">
                 I design and build AI-powered business systems that automate repetitive
                 workflows, connect company data and integrate AI with existing ERP,
                 Odoo, databases and business software.
@@ -171,7 +173,7 @@ export default function BusinessAutomation() {
             </div>
           </section>
 
-          <section className="border-y border-white/10">
+          <section className="section">
             <div className="mx-auto max-w-6xl px-6 py-20">
               <SectionHeading
                 eyebrow="What can be automated?"
@@ -186,7 +188,7 @@ export default function BusinessAutomation() {
                     className="rounded-xl border border-white/10 bg-white/[0.02] p-6"
                   >
                     <h3 className="text-xl font-medium">{service.title}</h3>
-                    <p className="mt-3 leading-7 text-white/55">
+                    <p className="section-copy">
                       {service.text}
                     </p>
                   </div>
@@ -195,7 +197,7 @@ export default function BusinessAutomation() {
             </div>
           </section>
 
-          <section className="mx-auto max-w-6xl px-6 py-20">
+          <section className="section">
             <SectionHeading
               eyebrow="How it works"
               title="From business problem to working automation"
@@ -216,7 +218,7 @@ export default function BusinessAutomation() {
             </div>
           </section>
 
-          <section className="border-y border-white/10">
+          <section className="section">
             <div className="mx-auto max-w-6xl px-6 py-20">
               <SectionHeading
                 eyebrow="Complex systems"
@@ -248,7 +250,7 @@ export default function BusinessAutomation() {
             </div>
           </section>
 
-          <section className="mx-auto max-w-6xl px-6 py-20">
+          <section className="section">
             <SectionHeading
               eyebrow="Who this is for"
               title="Companies that want to change how work gets done"
@@ -270,16 +272,17 @@ export default function BusinessAutomation() {
             </div>
           </section>
 
-          <section className="border-t border-white/10">
+          <section className="section">
             <div className="mx-auto max-w-6xl px-6 py-24">
               <div className="max-w-3xl">
-                <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+                <p className="eyebrow">
+                  <span></span>
                   Start with your process
                 </p>
-                <h2 className="mt-3 text-3xl font-semibold md:text-5xl">
+                <h2>
                   Tell me what takes too much time.
                 </h2>
-                <p className="mt-5 text-lg leading-8 text-white/55">
+                <p className="section-copy5">
                   Describe the current workflow, what is manual today and
                   where the biggest bottleneck is. We can identify what can be
                   automated and what kind of system is needed.
@@ -295,15 +298,12 @@ export default function BusinessAutomation() {
                 </a>
               </div>
             </div>
+            <Footer/>
           </section>
+
         </main>
 
-        <footer className="border-t border-white/10">
-          <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-white/40">
-            © {new Date().getFullYear()} {portfolio.name} · AI Systems Engineer ·
-            AI Agents · Business Automation · Odoo · Full-Stack Development
-          </div>
-        </footer>
+
       </div>
     </>
   );
@@ -320,12 +320,13 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-10 max-w-3xl">
-      <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400">
+      <p className="eyebrow">
+        <span></span>
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-3xl font-semibold md:text-4xl">{title}</h2>
+      <h2 className="">{title}</h2>
       {text && (
-        <p className="mt-4 text-lg leading-8 text-white/60">{text}</p>
+        <p className="section-copy">{text}</p>
       )}
     </div>
   );
